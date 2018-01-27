@@ -12,7 +12,8 @@ export class ProductListComponent implements OnInit{
     imageWidth: number = 50;
     imageMargin: number = 2;
     showImage: boolean = false;
-    filterText: string = 'cart';
+    _filterText: string;
+
     products: IProduct[] = [
         {
             "productId": 1,
@@ -35,6 +36,27 @@ export class ProductListComponent implements OnInit{
             "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
         }
     ];
+
+    filteredProducts: IProduct[];
+
+    constructor() {
+        this.filterText = '';
+        this.filteredProducts = this.products;
+    }
+    get filterText(): string {
+        return this._filterText;
+    }
+
+    set filterText(value: string) {
+        this._filterText = value;
+        this.filteredProducts = this.filterText ? this.perfomFilter(this.filterText) : this.products;
+    }
+
+    perfomFilter(filterBy: string): IProduct[] {
+        filterBy = filterBy.toLowerCase();
+        return this.products.filter((product: IProduct) =>
+            product.productName.toLowerCase().indexOf(filterBy) != -1);
+    }
 
     toggleImage(): void {
         this.showImage = !this.showImage;
