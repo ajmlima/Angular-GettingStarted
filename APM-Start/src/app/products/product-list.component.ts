@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit{
     imageMargin: number = 2;
     showImage: boolean = false;
     _filterText: string;
+    ratingToHeader: string;
 
     products: IProduct[] = [
         {
@@ -64,5 +65,9 @@ export class ProductListComponent implements OnInit{
 
     ngOnInit(): void {
         console.log("On init runned!")
+    }
+
+    onRaitingClicked(message: string): void {
+        this.ratingToHeader = ' - ' + message;
     }
 }

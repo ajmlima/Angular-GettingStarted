@@ -1,6 +1,11 @@
 .crop {
     overflow: hidden;
 }
+
+.stars{
+  width: 86px;
+}
+
 div {
     cursor: pointer;
 }

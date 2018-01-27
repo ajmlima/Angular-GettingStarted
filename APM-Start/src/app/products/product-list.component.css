@@ -1,3 +1,8 @@
 thead{
   color: #337AB7
 }
+
+h2, h4{
+  display: inline;
+  margin: 0px;
+}

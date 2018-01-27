@@ -1,6 +1,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    {{pageTitle}}
+    <h2>{{pageTitle}}</h2>
+    <h4 *ngIf="ratingToHeader">{{ratingToHeader}}</h4>
   </div>
   <div class="panel-body">
     <div class="row">
@@ -44,7 +45,7 @@
             <td>{{product.releaseDate}}</td>
             <td>{{product.price | currency:'EUR':true:'1.2-2'}}</td>
             <td>
-              <pm-star [rating]="product.starRating"></pm-star>
+              <pm-star [rating]="product.starRating" (ratingOut)="onRaitingClicked($event)"></pm-star>
             </td>
           </tr>
         </tbody>
