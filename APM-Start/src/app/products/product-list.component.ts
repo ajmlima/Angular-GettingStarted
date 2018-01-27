@@ -67,7 +67,7 @@ export class ProductListComponent implements OnInit{
         console.log("On init runned!")
     }
 
-    onRaitingClicked(message: string): void {
-        this.ratingToHeader = ' - ' + message;
+    onRaitingClicked(rating: number): void {
+        this.ratingToHeader = " - Stars rating clicked: " + rating;
     }
 }

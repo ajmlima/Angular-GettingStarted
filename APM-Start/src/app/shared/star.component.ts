@@ -9,13 +9,12 @@ export class StarComponent implements OnChanges {
     @Input() rating: number;
     starWidth: number;
 
-    @Output() ratingOut: EventEmitter<string> = new EventEmitter<string>();
+    @Output() ratingOut: EventEmitter<number> = new EventEmitter<number>();
                 
     constructor() {}
 
     retrieveRating() {
-        var message = "Stars rating clicked: " + this.rating;
-        this.ratingOut.emit(message);
+        this.ratingOut.emit(this.rating);
     }
 
     ngOnChanges(): void {
