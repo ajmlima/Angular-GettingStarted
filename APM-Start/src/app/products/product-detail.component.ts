@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from "./product";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from './product.service';
 
 @Component({
@@ -12,7 +12,10 @@ export class ProductDetailComponent implements OnInit {
     product: IProduct;
     errorMessage: string;
     
-    constructor(private _route: ActivatedRoute, private _productService: ProductService) {
+    constructor(private _route: ActivatedRoute,
+                private _productService: ProductService,
+                private _router: Router)
+    {
         this.pageTitle = "Product Detail"
     }
 
@@ -24,6 +27,10 @@ export class ProductDetailComponent implements OnInit {
           this.product = product;
         },
         error => this.errorMessage = <any>error);
+    }
+
+    onBack(): void {
+      this._router.navigate(['/products']);
     }
 
 }
